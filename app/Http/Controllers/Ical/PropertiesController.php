@@ -32,7 +32,7 @@ class PropertiesController extends Controller
         $icalTemplate = str_replace("[!ICAL_ROWS!]", $outputRows, $icaltemplate);
 
         header('Content-type: text/calendar; charset=utf-8');
-        header('Content-Disposition: inline; filename=calendar.ics');
+        header('Content-Disposition: download; filename=calendar.ics');
 
         echo $icalTemplate;
 

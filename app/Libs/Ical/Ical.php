@@ -14,24 +14,25 @@ class Ical {
 
     	return
             "BEGIN:VCALENDAR
-            VERSION:2.0
-            PRODID:-SimplyOwners
-            CALSCALE:GREGORIAN
-            METHOD:PUBLISH
-            [!ICAL_ROWS!]END:VCALENDAR";
-            
+VERSION:2.0
+PRODID:-SimplyOwners
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+[!ICAL_ROWS!]
+END:VCALENDAR";
+
     }
 
     public static function rowTemplate() {
 
     	return 
-            "BEGIN:VEVENT
-            UID:SimplyOwners-[!C_AID!]
-            DTSTART:[!C_START_DATE!]
-            DTEND:[!C_END_DATE!]
-            SUMMARY:[!C_NOTES!]
-            END:VEVENT
-            ";
+            "
+BEGIN:VEVENT
+UID:SimplyOwners-[!C_AID!]
+DTSTART:[!C_START_DATE!]
+DTEND:[!C_END_DATE!]
+SUMMARY:[!C_NOTES!]
+END:VEVENT";
 
     }
 
