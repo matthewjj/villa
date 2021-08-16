@@ -19,7 +19,10 @@ class PropertiesController extends Controller
 
     public function show($exportID, $propertyID, Request $request)
     {
-        $dates = $this->loaderBank->calendarLoader->byPropertyID($propertyID, $exportID);
+        $dates = $this
+            ->loaderBank
+            ->calendarLoader
+            ->main(['c.c_aid', 'c.c_start_date', 'c.c_end_date', 'c.c_notes'], ['p.p_aid' => $propertyID, 'p.p_ical_export_id' => $exportID]);
 
         $icaltemplate = Ical::icalTemplate();
         $outputRows = '';

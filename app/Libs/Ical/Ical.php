@@ -40,10 +40,10 @@ END:VEVENT";
 
     	$row_template = self::rowTemplate();
 
-    	$row = str_replace("[!C_AID!]", $date['c_aid'], $row_template );
-        $row = str_replace("[!C_START_DATE!]", Ical::dateToCal($date['c_start_date']), $row);
-        $row = str_replace("[!C_END_DATE!]", Ical::dateToCal($date['c_end_date']), $row);
-        $row = str_replace("[!C_NOTES!]", $date['c_notes'], $row);
+    	$row = str_replace("[!C_AID!]", $date->c_aid, $row_template );
+        $row = str_replace("[!C_START_DATE!]", Ical::dateToCal($date->c_start_date), $row);
+        $row = str_replace("[!C_END_DATE!]", Ical::dateToCal($date->c_end_date), $row);
+        $row = str_replace("[!C_NOTES!]", $date->c_notes, $row);
 
         return $row;
     }

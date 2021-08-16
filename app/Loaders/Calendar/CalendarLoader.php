@@ -4,6 +4,7 @@ namespace App\Loaders\Calendar;
 
 use App\Loaders\Database;
 use App\Models\Calendar\Calendar;
+use DB;
 
 class CalendarLoader extends Database
 {
@@ -11,16 +12,18 @@ class CalendarLoader extends Database
         parent::__construct(new Calendar());
     }
 
-    public function byPropertyID($id, $exportID = null) {
-        $dates = Calendar::leftJoin('_properties as p', '_calendar.c_p_aid', '=', 'p.p_aid')
-            ->where('p.p_aid', $id);
+    public function main($cols, $conditions = []) {
 
-        if($exportID) {
-            $dates->where('p.p_ical_export_id', $exportID);
+        $select = implode(',', $cols);
 
+        $query = DB::table('_calendar as c')
+            ->leftJoin('_properties as p', 'c.c_p_aid', '=', 'p.p_aid');
+
+        foreach($conditions as $column => $value) {
+            $query->where($column, '=', $value);
         }
 
-        return $dates->get();
+        return $query->selectRaw($select)->get();
     }
 
 }
