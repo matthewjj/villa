@@ -9,6 +9,7 @@ use DB;
 class CalendarLoader extends Database
 {
     public function __construct() {
+        //for later use where creating/updating
         parent::__construct(new Calendar());
     }
 
